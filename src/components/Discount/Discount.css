@@ -1,0 +1,21 @@
+.discount {
+  display: flex;
+  margin: 0 5px;
+  justify-content: space-between;
+}
+
+.discount .item {
+  padding: 2px;
+  font-size: 12px;
+}
+
+.discount-label {
+  font-weight: bold;
+  color: blue;
+  font-size: 14px;
+  margin: 0px;
+}
+
+.discount .total {
+  color: #10b981;
+}

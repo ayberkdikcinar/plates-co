@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+## How It Works
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To start the project, run the command `npm start`. This command initializes the application and fetches data from the `data.json` file. The `data.json` file contains all the necessary information, including products, offers, and delivery charges.
 
-## Available Scripts
+- **Data Fetching:** The application retrieves data from `data.json`, which has structured data.
+- **Offer and Delivery Charges Models:** The offers and delivery charges are modeled in TypeScript, with offers including conditions and actions, and delivery charges containing ranges to determine applicable fees based on the basket amount.
+- **Redux Integration:** Although Redux is not mandatory for this application, it is used for central management of the basket. This setup demonstrates how Redux can be beneficial in larger applications where multiple components may need to access and manage the basket data.
+- **Quantity Management:** The application restricts the quantity selection to a minimum of 1 and a maximum of 10. While there’s no limit on the total quantity that can be added, this constraint ensures a reasonable selection range.
+- **Basket Calculation:** The basket calculates two amounts: `originalAmount` (the total of item prices without any discounts or charges) and `totalAmount` (the final amount after applying offers and delivery charges). Discounts and offers are applied based on the `originalAmount`, which is calculated by multiplying the product prices by the quantity added to the basket.
 
-In the project directory, you can run:
+## Assumptions
 
-### `npm start`
+- Discounts are repeatable; for instance, if there is a "Buy 2, pay 1" offer and you buy 4 items, you will effectively pay for only 2 items.
+- I assume that the offers might differ. Therefore, I have added one more offer example, which provides a promotion where you can "Buy four green plates, pay only three." This offer applies when the quantity of the specified product (code G01) is at least 4. The discount type is dynamic, meaning the discount value is calculated based on product price, resulting in a discount of 1 unit for each qualifying offer.
+- I used TypeScript to ensure type safety and to provide better development tools and error checking, which can improve code quality and maintainability in larger projects.
+- I have structured the offers and delivery charges models on my own. An offer includes details such as the condition and the action that should be taken.
+- Delivery charges have entries, and each entry has a range (number). Based on the basket amount, it determines which charge will be applied.
+- I used Redux for the basket. While Redux is not required for this application, I thought it would be useful for a larger application with many components that might need to access the basket information. This is why I used Redux for central management of the basket and to demonstrate my ability to use Redux.
+- I limited the quantity selection to a minimum of 1 and a maximum of 10. You can add quantities in multiples of 10, with no additional limit.
+- The basket includes `originalAmount` and `totalAmount`. `originalAmount` refers to the amount without offers and charges (only the item prices), while `totalAmount` includes the final amount with offers and charges applied.
+- All discounts and offers are applied based on the `originalAmount`, which is the product prices multiplied by the quantity added to the basket.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Test Coverage Results:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![coverage](/src/assets/coverage.png)

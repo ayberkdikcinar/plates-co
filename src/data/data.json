@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "display_name": "Red Plate",
+      "code": "R01",
+      "price": 32.95
+    },
+    {
+      "display_name": "Green Plate",
+      "code": "G01",
+      "price": 24.95
+    },
+    {
+      "display_name": "Blue Plate",
+      "code": "B01",
+      "price": 7.95
+    }
+  ],
+
+  "offers": [
+    {
+      "id": "1",
+      "description": "Buy one red plate, get the second half price.",
+      "conditions": {
+        "productCode": "R01",
+        "minQuantity": 2
+      },
+      "actions": {
+        "discountType": "percentage",
+        "discountValue": 50
+      }
+    },
+    {
+      "id": "3",
+      "description": "Buy four green plates, pay only three.",
+      "conditions": {
+        "productCode": "G01",
+        "minQuantity": 4
+      },
+      "actions": {
+        "discountType": "dynamic",
+        "discountValue": -1
+      }
+    }
+  ],
+
+  "deliveryCharges": [
+    { "min": 0, "max": 49.99, "charge": 4.95 },
+    { "min": 50, "max": 89.99, "charge": 2.95 },
+    { "min": 90, "max": -1, "charge": 0 }
+  ]
+}

@@ -1,0 +1,12 @@
+.label-quantity {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-quantity {
+  width: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
